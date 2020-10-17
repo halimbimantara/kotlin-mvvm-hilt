@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.mindorks.framework.mvvm.com.wlb.framework.mvvm.ui.splash.SplashActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+<!--        <variable-->
+<!--            name="viewModel"-->
+<!--            type="com.wlb.framework.learning.ui.splash.SplashViewModel" />-->
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/splashscreen03">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_centerInParent="true" />
+
+        <ProgressBar
+            android:id="@+id/progresHarga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/TvVersionName"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp">
+        </ProgressBar>
+
+        <TextView
+            android:id="@+id/TvVersionName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="versi 1.0.0" />
+    </RelativeLayout>
+
+</layout>

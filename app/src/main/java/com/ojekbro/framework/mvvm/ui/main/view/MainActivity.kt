@@ -3,7 +3,6 @@ package com.ojekbro.framework.mvvm.ui.main.view
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -13,13 +12,12 @@ import com.ojekbro.framework.mvvm.data.model.api.User
 import com.ojekbro.framework.mvvm.ui.main.adapter.MainAdapter
 import com.ojekbro.framework.mvvm.ui.main.viewmodel.MainViewModel
 import com.ojekbro.framework.mvvm.utils.Status
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private val mainViewModel : MainViewModel by viewModels()
+    private val mainViewModel by viewModel<MainViewModel>()
     private lateinit var adapter: MainAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {

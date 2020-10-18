@@ -1,6 +1,8 @@
 package com.ojekbro.framework.mvvm.data.pref
 
 interface PrefHelper {
-    fun getPhoneNumbers() : String
-    fun setPhoneNumbers(Phone :String) : String
+    suspend fun getUsername(): String
+    suspend fun setUsername(username: String)
+    suspend fun getPhoneNumbers(): String
+    suspend fun setPhoneNumbers(Phone: String)
 }

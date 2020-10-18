@@ -1,25 +1,18 @@
 package com.ojekbro.framework.mvvm.di.module
 
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.ojekbro.framework.mvvm.BuildConfig
 import com.ojekbro.framework.mvvm.R
-import com.ojekbro.framework.mvvm.data.api.ApiHelper
-import com.ojekbro.framework.mvvm.data.api.ApiHelperImpl
-import com.ojekbro.framework.mvvm.data.api.ApiService
-import com.ojekbro.framework.mvvm.data.pref.AppPrefSourceImpl
-import com.ojekbro.framework.mvvm.data.pref.PrefHelper
 import com.ojekbro.framework.mvvm.utils.DEFAULT_FONT
-import com.ojekbro.framework.mvvm.utils.rx.AppSchedulerProvider
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
+import io.github.inflationx.calligraphy3.CalligraphyConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import javax.inject.Singleton
-import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
 import retrofit2.converter.moshi.MoshiConverterFactory
-import uk.co.chrisjenx.calligraphy.CalligraphyConfig
+import javax.inject.Singleton
 
 @Module
 @InstallIn(ApplicationComponent::class)
@@ -55,28 +48,9 @@ class ApplicationModule {
 
     @Provides
     @Singleton
-    fun provideApiService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
-
-    @Provides
-    @Singleton
-    fun provideApiHelper(apiHelper: ApiHelperImpl): ApiHelper = apiHelper
-
-    @Provides
-    @Singleton
-    fun provideAppPrefrences(appPref: AppPrefSourceImpl): PrefHelper = appPref
-
-    @Provides
-    @Singleton
-    fun provideCalligraphy() {
+    fun provideCalligraphy(): CalligraphyConfig =
         CalligraphyConfig.Builder()
             .setDefaultFontPath(DEFAULT_FONT)
             .setFontAttrId(R.attr.fontPath)
             .build()
-    }
-
-    @Provides
-    @Singleton
-    fun <SchedulerProvider> provideSchedulerProvider() {
-        AppSchedulerProvider()
-    }
 }

@@ -1,18 +1,20 @@
 package com.ojekbro.framework.mvvm.data.pref
 
-import com.ojekbro.framework.mvvm.utils.CacheKey
-import com.orhanobut.hawk.Hawk
-import javax.inject.Inject
+class AppPrefSourceImpl() : PrefHelper {
 
-class AppPrefSourceImpl @Inject constructor(private val prefHelper: PrefHelper) : PrefHelper {
-    fun getUsername() = Hawk.get(CacheKey.PREF_USERNAME, "")!!
-    fun setUsername(username: String) = Hawk.put(CacheKey.PREF_USERNAME, username)
-
-    override fun getPhoneNumbers(): String {
+    override suspend fun getUsername(): String {
         TODO("Not yet implemented")
     }
 
-    override fun setPhoneNumbers(Phone: String): String {
+    override suspend fun setUsername(username: String) {
         TODO("Not yet implemented")
+    }
+
+    override suspend fun getPhoneNumbers(): String {
+        return "prefHelper.getPhoneNumbers()"
+    }
+
+    override suspend fun setPhoneNumbers(Phone: String) {
+//        prefHelper.setPhoneNumbers(Phone)
     }
 }

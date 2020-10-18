@@ -49,8 +49,6 @@ import java.lang.annotation.RetentionPolicy;
 
 
 public class TopSnackbar {
-
-
     public static final int LENGTH_INDEFINITE = -2;
     public static final int LENGTH_SHORT = -1;
     public static final int LENGTH_LONG = 0;
@@ -61,19 +59,16 @@ public class TopSnackbar {
     private static final int MSG_DISMISS = 1;
 
     static {
-        sHandler = new Handler(Looper.getMainLooper(), new Handler.Callback() {
-            @Override
-            public boolean handleMessage(Message message) {
-                switch (message.what) {
-                    case MSG_SHOW:
-                        ((TopSnackbar) message.obj).showView();
-                        return true;
-                    case MSG_DISMISS:
-                        ((TopSnackbar) message.obj).hideView(message.arg1);
-                        return true;
-                }
-                return false;
+        sHandler = new Handler(Looper.getMainLooper(), message -> {
+            switch (message.what) {
+                case MSG_SHOW:
+                    ((TopSnackbar) message.obj).showView();
+                    return true;
+                case MSG_DISMISS:
+                    ((TopSnackbar) message.obj).hideView(message.arg1);
+                    return true;
             }
+            return false;
         });
     }
 

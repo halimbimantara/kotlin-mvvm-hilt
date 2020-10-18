@@ -1,4 +1,4 @@
-package id.rizmaulana.covid19.util
+package com.ojekbro.framework.mvvm.utils
 
 import org.threeten.bp.Instant
 import org.threeten.bp.LocalDate

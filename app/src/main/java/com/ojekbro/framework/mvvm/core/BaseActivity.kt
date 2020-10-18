@@ -23,7 +23,7 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.ojekbro.framework.mvvm.R
 import com.ojekbro.framework.mvvm.utils.ERROR_MESSAGE
 import com.ojekbro.framework.mvvm.widget.TopSnackbar
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper
+import io.github.inflationx.viewpump.ViewPumpContextWrapper
 
 /**
  * rizmaulana 2020-02-24.
@@ -41,7 +41,7 @@ abstract class BaseActivity : AppCompatActivity() {
     )
 
     override fun attachBaseContext(newBase: Context) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase))
+        super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase));
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

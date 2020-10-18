@@ -1,36 +1,25 @@
 package com.ojekbro.framework.mvvm.ui.main.viewmodel
 
-import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import com.ojekbro.framework.mvvm.core.BaseViewModel
 import com.ojekbro.framework.mvvm.data.model.api.User
-import com.ojekbro.framework.mvvm.data.repository.MainRepository
+import com.ojekbro.framework.mvvm.data.repository.Repository
 import com.ojekbro.framework.mvvm.utils.NetworkHelper
 import com.ojekbro.framework.mvvm.utils.Resource
-import kotlinx.coroutines.launch
 
-class MainViewModel @ViewModelInject constructor(
-    private val mainRepository: MainRepository,
+class MainViewModel (
+    private val mainRepository: Repository,
     private val networkHelper: NetworkHelper
-) : ViewModel() {
+) : BaseViewModel() {
 
     private val _users = MutableLiveData<Resource<List<User>>>()
     val users: LiveData<Resource<List<User>>>
         get() = _users
 
     init {
-        fetchUsers()
+//        fetchUsers()
     }
 
-    private fun fetchUsers() {
-        viewModelScope.launch {
-            _users.postValue(Resource.loading(null))
-            if (networkHelper.isNetworkConnected()) {
-                mainRepository.getUsers().let {
-                    if (it.isSuccessful) {
-                        _users.postValue(Resource.success(it.body()))
-                    } else _users.postValue(Resource.error(it.errorBody().toString(), null))
-                }
-            } else _users.postValue(Resource.error("No internet connection", null))
-        }
-    }
+
 }
